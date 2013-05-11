@@ -1,0 +1,38 @@
+apply plugin: "groovy"
+apply plugin: "maven-publish"
+apply plugin: "eclipse"
+
+group = "ssfsx17"
+version = "1.0.0"
+
+defaultTasks "build", "publishToMavenLocal"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: "org.codehaus.groovy", name: "groovy-all", version: "2.1.3"
+}
+
+publishing {
+    publications {
+        diceRollerLib(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "https://api.bintray.com/maven/ssfsx17/public/gaming"
+            credentials {
+                username "${bintrayUser}"
+                password "${bintrayKey}"
+            }
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = "1.6"
+}
