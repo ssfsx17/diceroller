@@ -24,7 +24,7 @@ publishing {
     }
     repositories {
         maven {
-            url "https://api.bintray.com/maven/ssfsx17/public/gaming"
+            url "https://api.bintray.com/maven/ssfsx17/public/diceroller"
             credentials {
                 username "${bintrayUser}"
                 password "${bintrayKey}"
